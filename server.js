@@ -7,7 +7,8 @@ const app = express();
 app.use(express.json()); // parse json bodies in the request object
 
 // Redirect requests to endpoint starting with /posts to postRoutes.js
-// app.use("/posts", require("./routes/postRoutes"));
+// TÄMÄ OLI KOMMENTOITU POIS POHJASSA, MIKÄ JOHTI VIRHEISIIN
+app.use("/posts", require("./routes/postRoutes"));
 
 // Global Error Handler. IMPORTANT function params MUST start with err
 app.use((err, req, res, next) => {
@@ -16,7 +17,7 @@ app.use((err, req, res, next) => {
   console.log(err.code);
 
   res.status(500).json({
-    message: "Something went rely wrong",
+    message: "Something went really wrong",
   });
 });
 
